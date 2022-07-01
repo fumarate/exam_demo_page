@@ -7,8 +7,8 @@
         <el-button @click="createPaper">新建试卷</el-button>
       </template>
       <template #default="scope">
-        <el-button type="primary" @click="goPaper(scope.row.paperId)">预览</el-button>
-        <el-button type="primary" @click="goPaper(scope.row.paperId)">查看</el-button>
+        <el-button type="primary" @click="viewPaper(scope.row.paperId)">预览</el-button>
+        <el-button type="primary" @click="viewAnswer(scope.row.paperId)">查看</el-button>
         <el-button @click="deletePaper(scope.row.paperId)">删除</el-button>
       </template>
     </el-table-column>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     viewPaper(paperId) {
-      this.$router.push({ name: "view", params: { paperId: paperId } })
+      this.$router.push({ path: "/answer", query: { paperId: paperId } })
     },
     getPapers() {
       axios.get("/paper")
@@ -50,6 +50,14 @@ export default {
     },
     createPaper() {
       this.$router.push("/edit")
+    },
+    viewAnswer(paperId) {
+      this.$router.push({
+        path: "/view",
+        query: {
+          paperId: paperId
+        }
+      })
     }
   },
 }

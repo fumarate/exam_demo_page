@@ -1,14 +1,13 @@
 <template>
     <el-table :data="papers" style="width: 100%" stripe="true">
         <el-table-column prop="title" label="试卷" />
-        <el-table-column prop="tid" label="老师" />
         <el-table-column prop="endTime" label="截止时间"/>
         <el-table-column align="center">
             <template #header>
                 <span>操作</span>
             </template>
             <template #default="scope">
-                <el-button size="small" type="primary" @click="viewPaper(scope.row.paperId)">查看
+                <el-button size="small" type="primary" @click="answerPaper(scope.row.paperId)">作答
                 </el-button>
             </template>
         </el-table-column>
@@ -30,8 +29,8 @@ export default {
         }
     },
     methods: {
-        viewPaper(paperId) {
-            this.$router.push({path:"/view",query:{paperId:paperId}})
+        answerPaper(paperId) {
+            this.$router.push({path:"/answer",query:{paperId:paperId}})
         }
     }
 

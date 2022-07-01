@@ -1,10 +1,12 @@
 <template>
   <div class="header">
-    <span> xx教学平台</span>
+    <span> 在线考试平台</span>
     <span>{{ isLogin ? this.user.name + '的试卷' : '请登录' }}</span>
     <el-button type="danger" @click="logout" :disabled="!isLogin">退出登录</el-button>
   </div>
-  <router-view :user="user"></router-view>
+  <div class="root">
+    <router-view :user="user"></router-view>
+  </div>
 </template>
 
 <script>
@@ -62,5 +64,10 @@ export default {
   color: white;
   display: flex;
   justify-content: space-around;
+}
+
+.root{
+    width:75%;
+   margin:auto
 }
 </style>
